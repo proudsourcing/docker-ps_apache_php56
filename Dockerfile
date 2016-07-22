@@ -1,5 +1,4 @@
 FROM eboraas/apache-php
-
 MAINTAINER info@proudsourcing.de
 
 ENV DEBIAN_FRONTEND noninteractive
