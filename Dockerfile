@@ -1,5 +1,6 @@
 FROM eboraas/apache-php
-MAINTAINER info@proudsourcing.de
+
+MAINTAINER merkl@proudsourcing.de
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
@@ -9,8 +10,9 @@ RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive t
 
 # install packages
 RUN apt-get update && \
+	apt-get -y upgrade --fix-missing && \
 	apt-get install -y --force-yes \
-		less vim wget \
+		less vim wget unzip rsync mysql-client \
 		php-pear php5-cli php5-cgi php5-common php5-curl php5-gd php5-imap php5-xmlrpc php5-dev php5-memcache php5-mcrypt \
 		jpegoptim optipng \
 		postfix && \
