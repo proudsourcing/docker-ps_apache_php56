@@ -12,7 +12,7 @@ RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive t
 RUN apt-get update && \
 	apt-get -y upgrade --fix-missing && \
 	apt-get install -y --force-yes \
-		less vim wget unzip rsync mysql-client \
+		less vim wget unzip rsync mysql-client git \
 		php-pear php5-cli php5-cgi php5-common php5-curl php5-gd php5-imap php5-xmlrpc php5-dev php5-memcache php5-mcrypt \
 		jpegoptim optipng \
 		postfix && \
