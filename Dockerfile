@@ -41,5 +41,12 @@ RUN mkdir /tmp/zendguardloader && \
     echo zend_extension=opcache.so > /etc/php5/apache2/conf.d/20-zendopcache.ini && \
     rm -rf /tmp/zendguardloader/
 
+# enable apache modules
+RUN /usr/sbin/a2enmod rewrite && /usr/sbin/a2enmod headers && /usr/sbin/a2enmod expires
+
+# use own vhost configuration
+COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+
 COPY ./ps_entrypoint.sh /
 CMD ["/bin/sh", "/ps_entrypoint.sh"]
